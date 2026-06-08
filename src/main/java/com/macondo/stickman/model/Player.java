@@ -10,6 +10,11 @@ public class Player extends GameObject {
     private boolean onGround = true;
     private InputHandler input;
 
+    private boolean isAttacking = false;
+    private double attackTimer = 0;
+    private static final double ATTACK_DURATION = 0.2;
+    private static final double ATTACK_COOLDOWN = 0.5;
+
     public Player(double x, double y, InputHandler input) {
         super(x, y, 40, 60);
         this.input = input;
@@ -30,6 +35,18 @@ public class Player extends GameObject {
             onGround = false;
         }
 
+        if (input.isAttacking() && attackTimer <= 0) {
+            isAttacking = true;
+            attackTimer = ATTACK_DURATION + ATTACK_COOLDOWN;
+        }
+
+        if (attackTimer > 0) {
+            attackTimer -= dt;
+            if (attackTimer <= ATTACK_COOLDOWN) {
+                isAttacking = false;
+            }
+        }
+
         vy += GRAVITY * dt;
 
         super.update(dt);
@@ -48,6 +65,18 @@ public class Player extends GameObject {
         if (x + width > 1024) {
             x = 1024 - width;
         }
+    }
+
+    public boolean isAttacking() {
+        return isAttacking;
+    }
+
+    public double getAttackX() {
+        return x + width + 20;
+    }
+
+    public double getAttackY() {
+        return y + height / 2;
     }
 
     public double getVisualX() {
