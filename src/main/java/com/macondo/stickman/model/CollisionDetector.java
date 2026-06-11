@@ -9,9 +9,7 @@ public class CollisionDetector {
     }
 
     public static void handlePlayerEnemyCollision(Player player, Enemy enemy) {
-        if (!checkCollision(player, enemy)) {
-            return;
-        }
+        if (!checkCollision(player, enemy)) return;
 
         double overlapLeft = (player.getX() + player.getWidth()) - enemy.getX();
         double overlapRight = (enemy.getX() + enemy.getWidth()) - player.getX();
@@ -36,5 +34,12 @@ public class CollisionDetector {
                 attackTop < enemy.getY() + enemy.getHeight() &&
                 attackBottom > enemy.getY();
     }
-}
 
+    public static void handleEnemyAttack(Player player, Enemy enemy) {
+        if (!enemy.isAttacking()) return;
+        if (!checkCollision(player, enemy)) return;
+
+        player.takeDamage(15);
+        player.knockback(enemy.getX() + enemy.getWidth() / 2);
+    }
+}

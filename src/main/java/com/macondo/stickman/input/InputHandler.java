@@ -35,3 +35,4 @@ public class InputHandler {
         return isKeyDown(KeyCode.J);
     }
 }
+
