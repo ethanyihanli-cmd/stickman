@@ -35,11 +35,16 @@ public class CollisionDetector {
                 attackBottom > enemy.getY();
     }
 
-    public static void handleEnemyAttack(Player player, Enemy enemy) {
-        if (!enemy.isAttacking()) return;
-        if (!checkCollision(player, enemy)) return;
+    public static boolean handleEnemyAttack(Player player, Enemy enemy) {
+        if (!enemy.isAttacking()) return false;
 
-        player.takeDamage(15);
+        double horizontalDistance = Math.abs(player.getCenterX() - (enemy.getX() + enemy.getWidth() / 2));
+        boolean verticalOverlap = player.getY() < enemy.getY() + enemy.getHeight() &&
+                player.getY() + player.getHeight() > enemy.getY();
+        if (horizontalDistance > 70 || !verticalOverlap) return false;
+
+        player.takeDamage(1);
         player.knockback(enemy.getX() + enemy.getWidth() / 2);
+        return true;
     }
 }

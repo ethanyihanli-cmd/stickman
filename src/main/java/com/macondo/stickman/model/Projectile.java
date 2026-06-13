@@ -9,7 +9,7 @@ public class Projectile extends GameObject {
         this.vx = vx;
         this.vy = vy;
         this.life = 2.0;
-        this.damage = 15;
+        this.damage = 2;
     }
 
     @Override

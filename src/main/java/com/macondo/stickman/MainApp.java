@@ -25,6 +25,10 @@ public class MainApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        canvas.setFocusTraversable(true);
+        canvas.requestFocus();
+        root.requestFocus();
+
         gameLoop.start();
     }
 
@@ -32,4 +36,3 @@ public class MainApp extends Application {
         launch(args);
     }
 }
-

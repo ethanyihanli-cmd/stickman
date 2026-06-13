@@ -20,19 +20,18 @@ public class InputHandler {
     }
 
     public boolean isMovingLeft() {
-        return isKeyDown(KeyCode.A);
+        return isKeyDown(KeyCode.A) || isKeyDown(KeyCode.LEFT);
     }
 
     public boolean isMovingRight() {
-        return isKeyDown(KeyCode.D);
+        return isKeyDown(KeyCode.D) || isKeyDown(KeyCode.RIGHT);
     }
 
     public boolean isJumping() {
-        return isKeyDown(KeyCode.K);
+        return isKeyDown(KeyCode.K) || isKeyDown(KeyCode.W) || isKeyDown(KeyCode.UP) || isKeyDown(KeyCode.SPACE);
     }
 
     public boolean isAttacking() {
-        return isKeyDown(KeyCode.J);
+        return isKeyDown(KeyCode.J) || isKeyDown(KeyCode.S);
     }
 }
-
