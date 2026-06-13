@@ -140,12 +140,12 @@ Combat uses rectangular hit areas. The melee attack creates a short hit zone in 
 
 Enemy behavior is intentionally simple and readable. Each enemy patrols between two x positions, chases the player when close enough, attacks when in range, and can jump toward higher platforms when needed.
 
-## Current Build Output
+## Web Preview
 
-The repository also includes an `index.html` page that links to the final JAR download:
+The repository includes a self-contained `index.html` preview version for events and quick browser demos:
 
 ```text
 index.html
 ```
 
-This is a small download page, not a browser version of the JavaFX game.
+Open it in a browser, click the preview, and the game starts immediately. This HTML version recreates the main JavaFX gameplay loop with Canvas and JavaScript so people can try the game without installing Java.
